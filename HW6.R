@@ -1,0 +1,16 @@
+#Nicholas Taubert HW6 CSC302
+library(ggplot2)
+library(tidyr)
+
+load('C:\\Users\\nickm\\Downloads\\house_prices.rda')
+
+
+ggplot(data = house_prices, aes(date, house_price_index), xaxp=c(1980,2020,2)) + facet_wrap(~state)
+
+house_reshaped <- gather(data = house_prices, key="house_price_index", value="unemploy_perc")
+
+#ggplot(data = house_reshaped, aes(date, house_price_index), xaxp=c(1980,2020,2))
+#+ facet_wrap(~state)
+
+#The chart does present this information well; if all cluttered on one graph, it would be nearly impossible
+#to distinguish the states apart from one another, let alone notice trends within them.
