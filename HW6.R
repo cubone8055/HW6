@@ -1,0 +1,17 @@
+#Nicholas Taubert HW6 CSC302
+library(ggplot2)
+library(tidyr)
+
+load('C:\\Users\\nickm\\Downloads\\house_prices.rda')
+
+
+ggplot(data = house_prices, aes(date, house_price_index), xaxp=c(1980,2020,2)) +  
+  geom_line(data=house_prices, aes(house_price_index, date)) + facet_wrap(~state)
+
+house_reshaped <- gather(data = house_prices, key=measure, value=value, -c(house_price_index, unemploy_perc, date, state))
+
+ggplot(data = house_reshaped, aes(date), xaxp=c(1980,2020,2)) + geom_line(data = house_reshaped, aes(unemploy_perc, date), color="violet") +
+  geom_line(data=house_reshaped, aes(house_price_index, date)) + facet_wrap(~state)
+
+#The chart does not present this information well; The unfathomable spike of unemploy_perc is nearly incomparable beside
+#The house_price_index, and looks nerly identical between states in that it's simply nearly vertical.
